@@ -57,6 +57,7 @@ public final class LiftSignListener implements Listener {
           Sign relative = blockAsSign(block.getRelative(0, i, 0));
           if (relative != null && relative.getLine(1).equals("[Lift Down]")) {
             event.getPlayer().teleport(getLiftDestination(event.getPlayer().getLocation(), relative.getLocation()));
+            event.setCancelled(true);
             return;
           } 
         } 
@@ -67,6 +68,7 @@ public final class LiftSignListener implements Listener {
           Sign relative = blockAsSign(block.getRelative(0, -i, 0));
           if (relative != null && relative.getLine(1).equals("[Lift Up]")) {
             event.getPlayer().teleport(getLiftDestination(event.getPlayer().getLocation(), relative.getLocation()));
+            event.setCancelled(true);
             return;
           } 
         } 
