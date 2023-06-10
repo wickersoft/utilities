@@ -1,0 +1,50 @@
+name: 'Utilities'
+version: '1.1'
+description: 'A small collection of useful commands and features.'
+author: 'Syndek'
+
+main: 'dev.syndek.utilities.UtilitiesPlugin'
+api-version: '1.14'
+
+commands:
+  lore:
+    description: 'Edit the lore of a held item.'
+    permission: 'utilities.lore'
+  name:
+    description: 'Edit the name of a held item.'
+    permission: 'utilities.name'
+  nightvision:
+    description: 'Toggle a permanent night vision effect.'
+    permission: 'utilities.nightvision'
+    aliases: ['nv']
+  sign:
+    description: 'Edit the text of a placed sign.'
+    permission: 'utilities.sign'
+  slurp:
+    description: 'Pick up items and XP orbs in a 16 block radius around you.'
+    permission: 'utilities.slurp'
+
+permissions:
+  utilities.*:
+    description: 'Gives access to all Utilities commands.'
+    children:
+      utilities.lore.*:
+        description: 'Gives access to /lore, and the use of colour and format codes.'
+        children:
+          utilities.lore: true
+          utilities.lore.colour: true
+          utilities.lore.format: true
+      utilities.name.*:
+        description: 'Gives access to /name, and the use of colour and format codes.'
+        children:
+          utilities.name: true
+          utilities.name.colour: true
+          utilities.name.format: true
+      utilities.sign.*:
+        description: 'Gives access to /sign, and the use of colour and format codes.'
+        children:
+          utilities.sign: true
+          utilities.sign.colour: true
+          utilities.sign.format: true
+      utilities.nightvision: true
+      utilities.slurp: true
