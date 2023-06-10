@@ -33,7 +33,7 @@ public final class LiftSignListener implements Listener {
         break;
       case "[lift down]":
         event.setLine(1, "[Lift Down]");
-        for (i = 1; i <= block.getY(); i++) {
+        for (i = 1; i <= block.getY() + 64; i++) {
           Sign relative = blockAsSign(block.getRelative(0, -i, 0));
           if (relative != null && relative.getLine(1).equals("[Lift Up]"))
             event.getPlayer().sendMessage("§7Lift sign linked!"); 
@@ -63,7 +63,7 @@ public final class LiftSignListener implements Listener {
         event.getPlayer().sendMessage("§cError: §7This Lift sign is not linked.");
         break;
       case "[Lift Down]":
-        for (i = 1; i <= block.getY(); i++) {
+        for (i = 1; i <= block.getY() + 64; i++) {
           Sign relative = blockAsSign(block.getRelative(0, -i, 0));
           if (relative != null && relative.getLine(1).equals("[Lift Up]")) {
             event.getPlayer().teleport(getLiftDestination(event.getPlayer().getLocation(), relative.getLocation()));
