@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
@@ -13,10 +14,7 @@ import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public final class LiftSignListener implements Listener {
-  private static final Set<Material> SIGN_TYPES = EnumSet.of(Material.ACACIA_SIGN, new Material[] { 
-        Material.ACACIA_WALL_SIGN, Material.BIRCH_SIGN, Material.BIRCH_WALL_SIGN, Material.DARK_OAK_SIGN, Material.DARK_OAK_WALL_SIGN, Material.JUNGLE_SIGN, Material.JUNGLE_WALL_SIGN, Material.OAK_SIGN, Material.OAK_WALL_SIGN, Material.SPRUCE_SIGN, 
-        Material.SPRUCE_WALL_SIGN });
-  
+   
   @EventHandler
   private void onSignChange(SignChangeEvent event) {
     int i;
@@ -79,8 +77,8 @@ public final class LiftSignListener implements Listener {
   
   private Sign blockAsSign(Block block) {
     if (block == null)
-      return null; 
-    return SIGN_TYPES.contains(block.getType()) ? (Sign)block.getState() : null;
+      return null;
+    return Tag.SIGNS.isTagged(block.getType()) ? (Sign)block.getState() : null;
   }
   
   private Location getLiftDestination(Location original, Location destination) {
